@@ -60,11 +60,17 @@ class RecursoViewSet(viewsets.ModelViewSet):
         if sobrevivente_1 == sobrevivente_2:
             return Response(
                 data = {"detalhes": "Os sobreviventes informados são iguais."},
-                status = status.HTTP_400_BAD_REQUEST
+                status = status.HTTP_403_FORBIDDEN
             )
 
         sobrevivente_1_obj = Sobrevivente.objects.get(id=sobrevivente_1)
         sobrevivente_2_obj = Sobrevivente.objects.get(id=sobrevivente_2)
+
+        if sobrevivente_1_obj.infectado or sobrevivente_2_obj.infectado:
+            return Response(
+                data = {"detalhes": "Os sobreviventes Infectados Não tem Permissão para Realizar Trocas."},
+                status = status.HTTP_403_FORBIDDEN
+            )
 
         try:
             recursos_sobrevivente_1 = self.request.data['sobrevivente_1']['recursos']

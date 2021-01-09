@@ -68,7 +68,8 @@ class RecursoPorSobrevivente(viewsets.ModelViewSet):
 
     def list(self, request):
         
-        quantidade_sobreviventes = Sobrevivente.objects.count()
+        # Os Infectados Não São Contabilizados
+        quantidade_sobreviventes = Sobrevivente.objects.filter(infectado=False).count()
         recursos_por_sobreviventes = []
 
         for item in Itens.objects.all():
@@ -77,7 +78,9 @@ class RecursoPorSobrevivente(viewsets.ModelViewSet):
 
             recursos_item = Recurso.objects.filter(item=item)
             for recurso in recursos_item:
-                quantidade_disponivel += recurso.quantidade
+                # São Somados os recursos apenas dos Sobreviventes Nao Infectados
+                if not recurso.sobrevivente.infectado:
+                    quantidade_disponivel += recurso.quantidade
             
             media = round(float(quantidade_disponivel / quantidade_sobreviventes), 2)
 
