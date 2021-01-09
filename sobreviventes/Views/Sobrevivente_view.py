@@ -12,12 +12,12 @@ from rest_framework.exceptions import MethodNotAllowed
 # app: sobreviventes
 from sobreviventes.models import Localidade, Itens, Sobrevivente, RelatoContaminacao, Recurso
 from sobreviventes.serializers import UsuarioSerializer, LocalidadeSerializer, ItemSerializer, SobreviventeSerializer, RecursoSerializer
-from sobreviventes.utilitarios import encontrar_localidade, cadastrar_sobrevivente, adicionar_inventario, localizar_sobrevivente
+from sobreviventes.utilitarios import encontrar_localidade, cadastrar_sobrevivente, localizar_sobrevivente, adicionar_recursos
 
 class SobreviventeViewSet(viewsets.ModelViewSet):
 
     permission_classes = [AllowAny]
-    http_method_names = ['post', 'put']
+    http_method_names = ['post', 'put', 'get']
     queryset = Sobrevivente.objects.all()
     serializer_class = SobreviventeSerializer
 
@@ -94,9 +94,8 @@ class SobreviventeViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
         
-
         recursos = self.request.data.get('recursos', None)
-        adicionar_inventario(novo_sobrevivente, recursos)
+        adicionar_recursos(novo_sobrevivente, recursos)
 
         return Response(
             data={"detalhes": "Sobrevivente Cadastrado com Sucesso"}, 

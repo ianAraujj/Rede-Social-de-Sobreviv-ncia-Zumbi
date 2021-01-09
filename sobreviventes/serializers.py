@@ -28,23 +28,27 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Itens
         fields = "__all__"
 
+class SobreviventeSerializer(serializers.ModelSerializer):
+    usuario = UsuarioSerializer(many=False, read_only=True)
+    ultimo_local = LocalidadeSerializer(many=False, read_only=True)
+
+    class Meta:
+        model = Sobrevivente
+        fields = ('id', 'usuario', 'nome', 'idade', 'sexo', 'ultimo_local')
+    
 class RecursoSerializer(serializers.ModelSerializer):
+    sobrevivente = SobreviventeSerializer(many=False, read_only=True)
     item = ItemSerializer(many=False, read_only=True)
 
     class Meta:
         model = Recurso
-        fields = ('item', 'quantidade')
+        fields = ('sobrevivente', 'item', 'quantidade')
 
-class SobreviventeSerializer(serializers.ModelSerializer):
-    usuario = UsuarioSerializer(many=False, read_only=True)
-    ultimo_local = LocalidadeSerializer(many=False, read_only=True)
-    inventario = RecursoSerializer(many=True, read_only=True)
+class RelatoContaminacaoSerializer(serializers.ModelSerializer):
+
+    relatado_por = SobreviventeSerializer(many=False, read_only=False)
+    possivel_infectado = SobreviventeSerializer(many=False, read_only=False)
 
     class Meta:
-        model = Sobrevivente
-        fields = ('usuario', 'nome', 'idade', 'sexo', 'ultimo_local', 'inventario')
-    
-    """
-    def validate(self, data):
-        return data
-    """
+        model = RelatoContaminacao
+        fields = ('relatado_por', 'possivel_infectado')
