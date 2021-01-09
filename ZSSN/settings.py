@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'sobreviventes'
+    'sobreviventes',
+    'relatorios'
 ]
 
 REST_FRAMEWORK = {
