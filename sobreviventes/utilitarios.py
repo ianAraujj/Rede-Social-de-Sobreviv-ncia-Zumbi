@@ -36,17 +36,17 @@ def encontrar_item(nome):
     
     return item
 
-def encontrar_recurso(item, quantidade):
+def encontrar_recurso(item, sobrevivente):
 
     try:
-        recurso = Recurso.objects.get(item=item,quantidade=quantidade)
+        recurso = Recurso.objects.get(item=item,sobrevivente=sobrevivente)
     except:
         return None
     
     return recurso
 
 
-def adicionar_inventario(novo_sobrevivente, recursos):
+def adicionar_recursos(sobrevivente, recursos):
 
     if recursos == None:
         return
@@ -57,16 +57,38 @@ def adicionar_inventario(novo_sobrevivente, recursos):
             item = encontrar_item(i['item'])
             quantidade = i['quantidade']
 
-            recurso = encontrar_recurso(item, quantidade)
+            recurso = encontrar_recurso(item, sobrevivente)
 
             if recurso == None:
                 recurso = Recurso.objects.create(
                     item=item,
-                    quantidade=quantidade
+                    quantidade=quantidade,
+                    sobrevivente=sobrevivente
                 )
+            else:
+                recurso.quantidade = recurso.quantidade + quantidade
+                recurso.save()
             
-            novo_sobrevivente.inventario.add(recurso)
-            novo_sobrevivente.save()
+        except:
+            pass
+
+
+def decrementar_recursos(sobrevivente, recursos):
+
+    if recursos == None:
+        return
+
+    for i in recursos:
+
+        try:
+            item = encontrar_item(i['item'])
+            quantidade = i['quantidade']
+
+            recurso = encontrar_recurso(item, sobrevivente)
+
+            if recurso != None:
+                recurso.quantidade = recurso.quantidade - quantidade
+                recurso.save()
             
         except:
             pass
@@ -81,3 +103,50 @@ def localizar_sobrevivente(usuario):
         return None
 
 
+def verificar_limite_relatos(possivel_infectado):
+
+    infectado = False
+
+    numero_de_relatos = RelatoContaminacao.objects.filter(
+        possivel_infectado = possivel_infectado
+    ).count()
+
+    if numero_de_relatos >= 3:
+        infectado = True
+    
+    return infectado
+
+
+def calcular_igualdade_troca(recursos_sobrevivente_1, recursos_sobrevivente_2):
+
+    dados_invalidos = True
+    igualdade = False
+
+    if recursos_sobrevivente_1 == None or recursos_sobrevivente_2 == None:
+        return dados_invalidos, igualdade
+    
+    try:
+
+        pontos_lado_1 = calcular_pontos(recursos_sobrevivente_1)
+        pontos_lado_2 = calcular_pontos(recursos_sobrevivente_2)
+
+        if pontos_lado_1 == pontos_lado_2:
+            igualdade = True
+        dados_invalidos = False
+        return dados_invalidos, igualdade
+
+    except:
+        return dados_invalidos, igualdade
+
+
+def calcular_pontos(recursos):
+    quantidade_pontos = 0
+
+    for i in recursos:
+        nome_item = i['item']
+        quantidade_item = i['quantidade']
+        item = encontrar_item(nome_item)
+
+        quantidade_pontos = quantidade_pontos + (item.pontos * quantidade_item)
+    
+    return quantidade_pontos

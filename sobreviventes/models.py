@@ -44,25 +44,6 @@ class Itens(models.Model):
         verbose_name="Item"
         verbose_name_plural="Itens"
 
-class Recurso(models.Model):
-
-    item = models.ForeignKey(
-        Itens,
-        on_delete=models.CASCADE,
-        related_name='item',
-        null=False,
-        blank=False
-    )
-
-    quantidade = models.IntegerField(
-        verbose_name="Quantidade",
-        null=False,
-        blank=False
-    )
-
-    def __str__(self):
-        return self.item.nome + " - Quantidade: " + str(self.quantidade)
-
 class Sobrevivente(models.Model):
 
     usuario = models.OneToOneField(
@@ -112,13 +93,39 @@ class Sobrevivente(models.Model):
         blank=False
     )
 
-    inventario = models.ManyToManyField(
-        Recurso,
-        verbose_name="Inventario de Recursos"
+    def __str__(self):
+        return self.nome
+
+class Recurso(models.Model):
+
+    item = models.ForeignKey(
+        Itens,
+        on_delete=models.CASCADE,
+        related_name='item',
+        null=False,
+        blank=False
+    )
+
+    quantidade = models.IntegerField(
+        verbose_name="Quantidade",
+        null=False,
+        blank=False
+    )
+
+    sobrevivente = models.ForeignKey(
+        Sobrevivente,
+        on_delete=models.CASCADE,
+        related_name='sobrevivente',
+        null=False,
+        blank=False
     )
 
     def __str__(self):
-        return self.nome
+        return (
+            self.item.nome + ", pontos: " + str(self.item.pontos) + 
+            " /// Quantidade: " + str(self.quantidade) + " /// Dono:  " + self.sobrevivente.nome
+        )
+    
 
 class RelatoContaminacao(models.Model):
 
