@@ -18,7 +18,7 @@ Este projeto foi feito com:
 
 3. `url/api/sobrevivente/`: detalhes em [Alterar Local Atual](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Atualizar-Localiza%C3%A7%C3%A3o)
 
-4. `url/api/relatarInfectado/`: detalhes em 
+4. `url/api/relatarInfectado/`: detalhes em [Relatar Infectado](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Relatar-Infectado)
 
 5. `url/api/item/`: detalhes em 
 
