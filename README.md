@@ -5,6 +5,7 @@ Este projeto foi feito com:
 - Python 3.8
 - Django 3.1.4
 - Django REST Framework 3.12.2
+- Django REST Framework-JWT 1.11.0
 - PostgreSQL 13
 - Docker
 - Docker Compose
