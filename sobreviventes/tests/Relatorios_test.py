@@ -102,11 +102,11 @@ class RelatorioTestCase(TestCase):
 
     def test_pontos_perdidos_infectados(self):
 
-        infectado_1 = Sobrevivente.objects.all()[1]
+        infectado_1 = Sobrevivente.objects.get(nome="Cris")
         infectado_1.infectado = True
         infectado_1.save()
 
-        infectado_2 = Sobrevivente.objects.all()[3]
+        infectado_2 = Sobrevivente.objects.get(nome="Julius")
         infectado_2.infectado = True
         infectado_2.save()
 

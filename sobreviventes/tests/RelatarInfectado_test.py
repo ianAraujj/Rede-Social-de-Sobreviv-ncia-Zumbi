@@ -97,7 +97,7 @@ class RelatarContaminacaoTestCase(TestCase):
         self.client.credentials(HTTP_AUTHORIZATION='JWT ' + str(token))
 
         data = {
-            "infectado_id": 2
+            "infectado_id": Sobrevivente.objects.all()[1].id
         }
 
         url = reverse('relatar-contaminacao')
@@ -208,8 +208,9 @@ class RelatarContaminacaoTestCase(TestCase):
         token = jwt_encode_handler(payload)
         self.client.credentials(HTTP_AUTHORIZATION='JWT ' + str(token))
 
+        infectado_id = Sobrevivente.objects.all()[0].id
         data = {
-            "infectado_id": Sobrevivente.objects.all()[0].id
+            "infectado_id": infectado_id
         }
 
         url = reverse('relatar-contaminacao')
@@ -237,10 +238,12 @@ class RelatarContaminacaoTestCase(TestCase):
 
         ## 
 
-        self.assertEqual(Sobrevivente.objects.all()[0].infectado, True)
+        self.assertEqual(Sobrevivente.objects.get(
+            id=infectado_id
+        ).infectado, True)
         self.assertEqual(
             RelatoContaminacao.objects.filter(
-                possivel_infectado=Sobrevivente.objects.all()[0]
+                possivel_infectado=Sobrevivente.objects.get(id=infectado_id)
             ).count(),
             3
         )
