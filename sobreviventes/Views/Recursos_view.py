@@ -13,7 +13,7 @@ from rest_framework.exceptions import MethodNotAllowed
 from sobreviventes.models import Itens, Sobrevivente, Recurso
 from sobreviventes.serializers import ItemSerializer, SobreviventeSerializer, RecursoSerializer
 from sobreviventes.validadores import validar_sobrevivente
-from sobreviventes.utilitarios import calcular_igualdade_troca, adicionar_recursos, decrementar_recursos
+from sobreviventes.utilitarios import calcular_igualdade_troca, adicionar_recursos, decrementar_recursos, possui_recurso
 
 
 class RecursoViewSet(viewsets.ModelViewSet):
@@ -28,7 +28,6 @@ class RecursoViewSet(viewsets.ModelViewSet):
             sobrevivente_1 = self.request.data['sobrevivente_1']['id']
         except:
             sobrevivente_1 = None
-        
         try:
             sobrevivente_2 = self.request.data['sobrevivente_2']['id']
         except:
@@ -60,11 +59,17 @@ class RecursoViewSet(viewsets.ModelViewSet):
         if sobrevivente_1 == sobrevivente_2:
             return Response(
                 data = {"detalhes": "Os sobreviventes informados são iguais."},
-                status = status.HTTP_400_BAD_REQUEST
+                status = status.HTTP_403_FORBIDDEN
             )
 
         sobrevivente_1_obj = Sobrevivente.objects.get(id=sobrevivente_1)
         sobrevivente_2_obj = Sobrevivente.objects.get(id=sobrevivente_2)
+
+        if sobrevivente_1_obj.infectado or sobrevivente_2_obj.infectado:
+            return Response(
+                data = {"detalhes": "Os sobreviventes Infectados Não tem Permissão para Realizar Trocas."},
+                status = status.HTTP_403_FORBIDDEN
+            )
 
         try:
             recursos_sobrevivente_1 = self.request.data['sobrevivente_1']['recursos']
@@ -79,7 +84,7 @@ class RecursoViewSet(viewsets.ModelViewSet):
         )
 
         if dados_invalidos:
-            erro = "Este campo é obrigatório. Deve ser um array contendo os campos: 'item' e 'quantidade'."
+            erro = "Este campo é obrigatório. Deve ser um array contendo os campos: 'item' (nome do item) e 'quantidade'."
             mensagem_erro = {
                 "recursos": erro
             }
@@ -93,7 +98,17 @@ class RecursoViewSet(viewsets.ModelViewSet):
                 data = {"detalhes": "Não há uma Igualdade de Pontos para Realizar a Troca"},
                 status = status.HTTP_400_BAD_REQUEST
             )
-        
+
+        recursos_insuficientes = ""
+        if not possui_recurso(sobrevivente_1_obj, recursos_sobrevivente_1):
+            recursos_insuficientes += "'sobrevivente_1': Não Possui Recursos Suficientes para a Troca. "
+        if not possui_recurso(sobrevivente_2_obj, recursos_sobrevivente_2):
+            recursos_insuficientes += "'sobrevivente_2': Não Possui Recursos Suficientes para a Troca. "
+        if recursos_insuficientes != "":
+            return Response(
+                data = {"detalhes": recursos_insuficientes},
+                status = status.HTTP_400_BAD_REQUEST
+            )
 
         adicionar_recursos(sobrevivente_1_obj, recursos_sobrevivente_2)
         decrementar_recursos(sobrevivente_1_obj, recursos_sobrevivente_1)

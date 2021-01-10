@@ -150,3 +150,31 @@ def calcular_pontos(recursos):
         quantidade_pontos = quantidade_pontos + (item.pontos * quantidade_item)
     
     return quantidade_pontos
+
+def calcular_pontos_sobrevivente(sobrevivente):
+    
+    pontos = 0
+    for recurso in Recurso.objects.filter(sobrevivente=sobrevivente):
+        pontos += (recurso.quantidade * recurso.item.pontos) 
+    
+    return pontos
+
+
+def possui_recurso(sobrevivente, possiveis_recursos):
+
+    possui = False
+
+    if possiveis_recursos == None:
+        return possui
+    
+    for i in possiveis_recursos:
+
+        item = encontrar_item(i['item'])
+        quantidade = i['quantidade']
+
+        recurso = encontrar_recurso(item, sobrevivente)
+        if (recurso == None and quantidade > 0) or recurso.quantidade < quantidade:
+            return possui
+
+    possui = True    
+    return possui
