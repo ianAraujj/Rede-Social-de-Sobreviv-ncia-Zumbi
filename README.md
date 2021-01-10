@@ -28,7 +28,7 @@ Este projeto foi feito com:
 
 8. `url/api/relatorios/NaoInfectados/`: detalhes em [Nao Infectados](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Relat%C3%B3rio-Sobreviventes-N%C3%A3o-Infectados)
 
-9. `url/api/relatorios/recurso/sobrevivente/`: detalhes em 
+9. `url/api/relatorios/recurso/sobrevivente/`: detalhes em [Media de Recursos](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Relat%C3%B3rio-Recurso-Por-Sobrevivente)
 
 10. `url/api/relatorios/pontosPerdidos/`: detalhes em 
 
