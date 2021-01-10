@@ -51,7 +51,7 @@ O resultado deste comando deve ser inserido no arquivo `.env` na variável `SECR
 
 Com todas as dependências instaladas e os comandos anteriores concluídos, você deve seguir esses passos:
 
-1. Criar uma virtualenv na sua máquina. Aqui está um tutorial ótimo de como fazer isso: [tutorial](https://tutorial.djangogirls.org/en/installation/#virtualenv)
+1. Criar uma virtualenv na sua máquina. Aqui está um tutorial ótimo de como fazer isso: [Tutorial Django Girls](https://tutorial.djangogirls.org/en/installation/#virtualenv)
 
 2. Instale os pacotes:
 
