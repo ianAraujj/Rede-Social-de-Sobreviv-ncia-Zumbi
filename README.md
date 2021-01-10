@@ -1,6 +1,19 @@
 # Rede-Social-de-Sobrevivencia-Zumbi
 
-Este projeto foi feito com:
+## URL DA APLICAÇÃO
+
+```sh
+https://zssn-teste.herokuapp.com/
+```
+
+Pode levar um tempo maior pra carregar, pois a API está hospedada em um plano Gratuito. Para acessar o Portal do ADMIN, as credenciais são: **username**: admin e **senha**: admin
+
+## Quadro KANBAN utilizado no Desenvolvimento do Projeto
+
+[QUADRO](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/projects/1)
+
+
+## Este projeto foi feito com:
 
 - Python 3.8
 - Django 3.1.4
@@ -30,7 +43,7 @@ Este projeto foi feito com:
 
 9. `url/api/relatorios/recurso/sobrevivente/`: detalhes em [Media de Recursos](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Relat%C3%B3rio-Recurso-Por-Sobrevivente)
 
-10. `url/api/relatorios/pontosPerdidos/`: detalhes em 
+10. `url/api/relatorios/pontosPerdidos/`: detalhes em [Pontos Perdidos](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Pontos-Perdidos)
 
 ## Configurações de Uso
 
