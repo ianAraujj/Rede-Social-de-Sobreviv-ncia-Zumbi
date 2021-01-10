@@ -11,7 +11,7 @@ Este projeto foi feito com:
 
 # Pontos de Extremidade da API REST:
 
-1. `url/api/cadastrar/`: detalhes em 
+1. `url/api/cadastrar/`: detalhes em (Cadastro de Sobrevivente)[https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Cadastrar-Sobrevivente]
 
 2. `url/api/login/`: detalhes em 
 
