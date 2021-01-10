@@ -24,7 +24,7 @@ Este projeto foi feito com:
 
 6. `url/api/recursos/trocar/`: detalhes em [Trocar Itens](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Trocar-Itens)
 
-7. `url/api/relatorios/infectados/`: detalhes em 
+7. `url/api/relatorios/infectados/`: detalhes em [Infectados](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Relat%C3%B3rio-Infectados)
 
 8. `url/api/relatorios/NaoInfectados/`: detalhes em 
 
