@@ -109,7 +109,7 @@ class SobreviventeViewSet(viewsets.ModelViewSet):
         if sobrevivente == None:
             return Response(
                 data={"detalhes": "Token de Autenticação Não Encontrado."}, 
-                status=status.HTTP_403_FORBIDDEN
+                status=status.HTTP_401_UNAUTHORIZED
             )
 
         localidade_serializer = LocalidadeSerializer(data=request.data)

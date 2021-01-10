@@ -1,0 +1,5 @@
+from sobreviventes.tests.CadastrarSobrevivente_test import CadastrarSobreviventeTestCase
+from sobreviventes.tests.AtualizarLocalizacao_test import AtualizarLocalizacaoTestCase
+from sobreviventes.tests.RelatarInfectado_test import RelatarContaminacaoTestCase
+from sobreviventes.tests.TrocarItens_test import TrocarItensTestCase
+from sobreviventes.tests.Relatorios_test import RelatorioTestCase
