@@ -29,11 +29,11 @@ Pode levar um tempo maior pra carregar, pois a API está hospedada em um plano G
 
 2. `url/api/login/`: detalhes em [LOGIN](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/LOGIN)
 
-3. `url/api/sobrevivente/`: detalhes em [Sobrevivente](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Atualizar-Localiza%C3%A7%C3%A3o)
+3. `url/api/sobrevivente/`: detalhes em [Sobrevivente](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Sobrevivente)
 
 4. `url/api/relatarInfectado/`: detalhes em [Relatar Infectado](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Relatar-Infectado)
 
-5. `url/api/item/`: detalhes em [Item](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Cadastrar-Novo-Item)
+5. `url/api/item/`: detalhes em [Item](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Item)
 
 6. `url/api/recursos/trocar/`: detalhes em [Trocar Itens](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Trocar-Itens)
 
