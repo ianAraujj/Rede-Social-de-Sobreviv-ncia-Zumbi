@@ -20,7 +20,7 @@ Este projeto foi feito com:
 
 4. `url/api/relatarInfectado/`: detalhes em [Relatar Infectado](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Relatar-Infectado)
 
-5. `url/api/item/`: detalhes em [Cadastrar Novo Item](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Cadastrar-Novo-Item)
+5. `url/api/item/`: detalhes em [Item](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Cadastrar-Novo-Item)
 
 6. `url/api/recursos/trocar/`: detalhes em 
 
