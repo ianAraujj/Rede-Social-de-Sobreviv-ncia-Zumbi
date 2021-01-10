@@ -14,7 +14,7 @@ Este projeto foi feito com:
 
 1. `url/api/cadastrar/`: detalhes em [Cadastro de Sobrevivente](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/Cadastrar-Sobrevivente)
 
-2. `url/api/login/`: detalhes em 
+2. `url/api/login/`: detalhes em [LOGIN](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/wiki/LOGIN)
 
 3. `url/api/sobrevivente/`: detalhes em 
 
