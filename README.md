@@ -10,7 +10,7 @@ Pode levar um tempo maior pra carregar, pois a API está hospedada em um plano G
 
 ## Quadro KANBAN utilizado no Desenvolvimento do Projeto
 
-[QUADRO](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/projects/1)
+* [QUADRO](https://github.com/ianAraujj/Rede-Social-de-Sobreviv-ncia-Zumbi/projects/1)
 
 
 ## Este projeto foi feito com:
