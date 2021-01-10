@@ -6,7 +6,7 @@
 https://zssn-teste.herokuapp.com/
 ```
 
-Pode levar um tempo maior pra carregar, pois a API está hospedada em um plano Gratuito. Para acessar o Portal do ADMIN, as credenciais são: **username**: admin e **senha**: admin
+Pode levar um tempo maior pra carregar, pois a API está hospedada em um plano Gratuito. Para acessar o Portal do ADMIN, as credenciais são => **username**: admin e **senha**: admin
 
 ## Quadro KANBAN utilizado no Desenvolvimento do Projeto
 
