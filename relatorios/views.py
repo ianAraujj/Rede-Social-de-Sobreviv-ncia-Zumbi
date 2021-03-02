@@ -1,6 +1,6 @@
 # rest_framework
 
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions
 from rest_framework.views import APIView
 from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from rest_framework.exceptions import MethodNotAllowed
+from pagseguro import PagSeguro
 
 # app: sobreviventes
 from sobreviventes.models import Sobrevivente, Recurso, Itens
@@ -129,3 +130,17 @@ class PontosPerdidos(viewsets.ModelViewSet):
             data=resposta,
             status=status.HTTP_200_OK   
         )
+
+
+class PagSeguroNotification(generics.GenericAPIView):
+    permission_classes = (permissions.AllowAny, )
+    get_serializer_class = None
+
+    def post(self, request, *args, **kwargs):
+        notification_code = request.data['notificationCode']
+        pg = PagSeguro(email="ianlucas2503@gmail.com", token="BC7D40CBF78449E1B355217F2B69EE67")
+        notification_data = pg.check_notification(notification_code)
+        print(notification_data)
+        response = Response({"details": "ok"}, status=status.HTTP_200_OK)
+        response["Access-Control-Allow-Origin"] = "https://sandbox.pagseguro.uol.com.br"
+        return response

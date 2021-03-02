@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from relatorios.views import PagSeguroNotification
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('sobreviventes.urls')),
-    path('api/relatorios/', include('relatorios.urls'))
+    path('api/relatorios/', include('relatorios.urls')),
+    path('notification/', PagSeguroNotification.as_view(), name='notification-pagseguro')
 ]
